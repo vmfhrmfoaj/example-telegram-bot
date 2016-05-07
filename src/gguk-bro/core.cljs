@@ -1,9 +1,9 @@
 (ns gguk-bro.core
-  (:require [clojure.browser.repl :as repl]))
+  (:require [cljs.nodejs :as nodejs]))
 
-;; (defonce conn
-;;   (repl/connect "http://localhost:9000/repl"))
+(nodejs/enable-util-print!)
 
-(enable-console-print!)
+(defn -main [& args]
+  (println "Hello world!"))
 
-(println "Hello world!")
+(set! *main-cli-fn* -main)
