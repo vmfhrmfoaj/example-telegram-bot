@@ -3,7 +3,13 @@
 
 (nodejs/enable-util-print!)
 
-(defn -main [& args]
-  (println "Hello world!"))
+(defonce https       (nodejs/require "https"))
+(defonce querystring (nodejs/require "querystring"))
 
-(set! *main-cli-fn* -main)
+(defn -main [event context]
+  (println (. js/JSON (stringify event)))
+  (println (. js/JSON (stringify context))))
+
+;; to fake CLJS compiler
+(defn none [& _] nil)
+(set! *main-cli-fn* none)

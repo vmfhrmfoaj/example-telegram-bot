@@ -1,0 +1,5 @@
+#!/bin/sh
+rlwrap lein trampoline run -m clojure.main scripts/aws-lambda.clj
+echo "exports.handler = gguk_bro.core._main;" >> index.js
+rm -rf $(basename $(PWD)).zip
+zip -r $(basename $(PWD)) index.js out/ node_modules/ > /dev/null
